@@ -1387,6 +1387,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+            // 确保父目录存在
+            File parentDir = file.getParentFile();
+            if (parentDir != null && !parentDir.exists()) {
+                parentDir.mkdirs();
+            }
             file.createNewFile();
             OutputStream outStream = new FileOutputStream(file);
             outStream.write(buffer, 0, read);
